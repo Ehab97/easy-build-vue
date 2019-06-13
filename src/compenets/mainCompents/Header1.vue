@@ -21,7 +21,9 @@
 
                   <b-navbar-nav right>
                     <b-nav-item><router-link to="/">{{ name }}</router-link></b-nav-item>
-                   <router-link to="/login" class="nav-link"><span @click="logout()">Logout</span>  <font-awesome-icon icon="power-off" /></router-link>
+                   <a   @click="logout()" class="nav-link">Logout
+                        <font-awesome-icon icon="power-off" />
+                   </a>
                   </b-navbar-nav>
                 </b-navbar-nav>
           </b-collapse>
@@ -48,10 +50,11 @@ export default {
       return (this.$store.state.key=this.key)
     },
       logout(){
-          if(this.$route.path== "/login"){
-          return (this.$store.state.app="display:none",this.$store.state.userDetails.name='');
-              }
-      return this.$store.state.userDetails.name='';
+            return this.$store.state.app=true,this.$store.state.userDetails.name='',this.$router.push({name:'login'});
+      //     if(this.$route.path== "/login"){
+      //     return (this.$store.state.app=true,this.$store.state.userDetails.name='');
+      //         }
+      // return this.$store.state.userDetails.name='';
     }
   },
 }
@@ -73,6 +76,7 @@ a{
     margin-right: 30px;
     color: #3C444C;
     text-decoration: none;
+    cursor: pointer;
 }
 .navbar-light .navbar-brand {
    font-family: Roboto;

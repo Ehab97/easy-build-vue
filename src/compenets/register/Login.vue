@@ -19,9 +19,9 @@
                   >
                    Remeber Me
                   </b-form-checkbox>
-                   <router-link to="/">
-                         <b-button @click="sendData()">Login <font-awesome-icon icon="chevron-right"/></b-button>
-                   </router-link>
+
+                         <b-button @click="sendData">Login <font-awesome-icon icon="chevron-right"/></b-button>
+
                    <p class="text center">Don’t have an account? <router-link to="/signup">Create One</router-link></p>
              </form>
             </b-col>
@@ -44,16 +44,16 @@ export default {
     }
   },
   methods: {
-    sendData(e){
-      // e.preventDefault();
+    sendData(){
       if(this.name=='ehab'&&this.pass !='123'){
-        return alert('wrong pass');
-        // e.target.preventDefault();
+         return alert('wrong pass'),this.$store.state.app=true,console.log(this.$store.state.app),this.$router.push({name:'login'});
+
       }else if(this.pass==''){
-        return alert('Please INsert PAss');
+        return alert('fill  pass'),this.$store.state.app=true,console.log(this.$store.state.app),this.$router.push({name:'login'});
       }
       else{
-        this.$store.state.userDetails.name=this.name;
+          this.$store.state.userDetails.name=this.name;
+          return this.$store.state.app=false,console.log(this.$store.state.app),this.$router.push({name:'home'});
       }
     }
   },

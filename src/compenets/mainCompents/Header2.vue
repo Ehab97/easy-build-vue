@@ -11,7 +11,9 @@
                 <b-navbar-nav class="ml-auto">
                   <b-navbar-nav right>
                     <b-nav-item href="#">{{name}}</b-nav-item>
-                    <router-link to="/login" class="nav-link"><span @click="logout()">Logout</span>   <font-awesome-icon icon="power-off" /></router-link>
+                   <a   @click="logout()" class="nav-link">Logout
+                        <font-awesome-icon icon="power-off" />
+                   </a>
                   </b-navbar-nav>
                 </b-navbar-nav>
           </b-collapse>
@@ -32,8 +34,13 @@ export default {
       return this.$store.state.userDetails.name;
     },
   },methods: {
-        logout(){
-      return this.$store.state.userDetails.name='';
+       logout(){
+        return this.$store.state.app=true,this.$store.state.userDetails.name='',this.$router.push({name:'login'});
+
+      //     if(this.$route.path== "/login" ||this.$route.path== "/signup"){
+      //     return (this.$store.state.app=true,this.$store.state.userDetails.name='');
+      //         }
+      // return this.$store.state.userDetails.name='';
     }
   },
 }
@@ -78,6 +85,17 @@ margin-right: 30px;
 color: #3C444C;
 }
 
+a{
+ font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: normal;
+    margin-right: 30px;
+    color: #3C444C;
+    text-decoration: none;
+    cursor: pointer;
+}
 @media screen and (max-width: 480px){
   .nav-item{
     margin-bottom: 20px;

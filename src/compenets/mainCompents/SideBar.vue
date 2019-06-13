@@ -22,7 +22,7 @@ export default {
     return {
       styles:[1,0,0,0,0],
       tabs: [
-      { name: 'Home', link: '/', icon: 'home', isActive: true },
+      { name: 'Home', link: '/home', icon: 'home', isActive: true },
       { name: 'Location', link: '/location', icon: 'map-marker-alt', isActive: false },
       { name: 'Suplliers', link: '/editsuplliers', icon: 'truck-moving', isActive: false },
       { name: 'Employees', link: '/employee', icon: 'users', isActive: false },

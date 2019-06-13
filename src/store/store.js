@@ -5,7 +5,7 @@ Vue.use(Vuex); //using plugin
 
 export const store = new Vuex.Store({
     state: { //defineging our data
-        app: 'display:block',
+        app: true,
         key: '',
         headerSelect: 'appMainHeader',
         locations: ['Egypt'],

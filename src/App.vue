@@ -1,14 +1,16 @@
 <template>
   <div>
-    <!-- <app-main-header></app-main-header> -->
-    <!-- <app-secondry-header></app-secondry-header> -->
+
     <component :is="$store.state.headerSelect"></component>
     <b-container fluid>
           <b-row>
-               <b-col cols="2" :style="$store.state.app">
-                  <app-side-bar>
+               <b-col cols="2">
 
-                  </app-side-bar>
+                  <div :style="($store.state.app)?'display:none':'display:block'">
+                      <app-side-bar>
+                      </app-side-bar>
+                  </div>
+
                </b-col>
                <b-col cols="10" class="content">
                   <router-view></router-view>
@@ -36,11 +38,7 @@ import Footer from './compenets/mainCompents/Footer';
 export default {
   data () {
     return {
-      // headerSelect:'appMainHeader',
-      //   userDetails:{
-      //   name:'',
-      //   pass:''
-      // }
+
     }
   },
   components:{
@@ -59,13 +57,15 @@ export default {
     appFooter:Footer
   },
   methods: {
+      check(){
 
+      }
   },
-  // created() {
-  //   if (this.$mq.above(600)) {
-  //     console.log('screen > 600px')
-  //   }
-  // },
+created() {
+  // if(this.$route.path== '/login'||this.$route.path== '/signup'){
+  //         return this.$store.state.app=true;
+  //       }false
+},
 }
 </script>
 
