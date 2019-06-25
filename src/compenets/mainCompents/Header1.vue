@@ -21,7 +21,7 @@
 
                   <b-navbar-nav right>
                     <b-nav-item><router-link to="/">{{ name }}</router-link></b-nav-item>
-                   <a   @click="logout()" class="nav-link">Logout
+                   <a   @click="confirmation=true; logout();" class="nav-link">Logout
                         <font-awesome-icon icon="power-off" />
                    </a>
                   </b-navbar-nav>
@@ -38,6 +38,7 @@ export default {
   data () {
     return {
       key:'',
+      confirmation:false
     }
   },
   computed:{
@@ -51,12 +52,21 @@ export default {
     },
       logout(){
             return this.$store.state.app=true,this.$store.state.userDetails.name='',this.$router.push({name:'login'});
-      //     if(this.$route.path== "/login"){
-      //     return (this.$store.state.app=true,this.$store.state.userDetails.name='');
-      //         }
-      // return this.$store.state.userDetails.name='';
+
     }
   },
+   beforeRouteLeave (to, from, next) {
+    if(this.confirmation){
+      next();
+    }else{
+      if(confirm('are you sure ?')){
+        next();
+      }else{
+        next(false);
+      }
+
+    }
+  }
 }
 </script>
 

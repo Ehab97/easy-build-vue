@@ -11,7 +11,7 @@
                 <b-navbar-nav class="ml-auto">
                   <b-navbar-nav right>
                     <b-nav-item href="#">{{name}}</b-nav-item>
-                   <a   @click="logout()" class="nav-link">Logout
+                   <a   @click="confirmation=true; logout();" class="nav-link">Logout
                         <font-awesome-icon icon="power-off" />
                    </a>
                   </b-navbar-nav>
@@ -27,7 +27,7 @@ export default {
 
   data () {
     return {
-
+      confirmation:false
     }
   },computed: {
       name(){
@@ -36,13 +36,20 @@ export default {
   },methods: {
        logout(){
         return this.$store.state.app=true,this.$store.state.userDetails.name='',this.$router.push({name:'login'});
-
-      //     if(this.$route.path== "/login" ||this.$route.path== "/signup"){
-      //     return (this.$store.state.app=true,this.$store.state.userDetails.name='');
-      //         }
-      // return this.$store.state.userDetails.name='';
     }
   },
+     beforeRouteLeave (to, from, next) {
+    if(this.confirmation){
+      next();
+    }else{
+      if(confirm('are you sure ?')){
+        next();
+      }else{
+        next(false);
+      }
+
+    }
+  }
 }
 </script>
 
